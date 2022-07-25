@@ -10,9 +10,15 @@ ENV MYSQL_ROOT_PASSWORD=root
 ENV MYSQL_USER=root
 ENV MYSQL_PASSWORD=root
 
-COPY ./sqlfile ./sqlfile
-COPY ./my.cnf /etc/mysql/conf.d
+# RUN chmod 644 /etc/mysql/conf.d/mysql.cnf
+RUN chmod 644 /etc/mysql/mysql.conf.d/mysqld.cnf
 
-RUN chmod 644 /etc/mysql/conf.d/my.cnf
+# COPY ./sqlfile ./sqlfile
+# COPY ./mysql.cnf /etc/mysql/conf.d/mysql.cnf
+# COPY ./mysql.cnf /etc/mysql/mysql.conf.d/mysql.cnf
+# COPY ./mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
 
 EXPOSE 3306
+
+
