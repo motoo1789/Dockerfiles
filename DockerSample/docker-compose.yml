@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  # mysql
+  mysql:
+    build:
+       dockerfile: ./mysql/Dockerfile
+    
+    container_name: sample-kifu-mysql
+    
+    env_file: 
+      - ./mysql/mysql.env
+    
+    volumes:
+      - ./reflect:/var/lib/mysql
+
+    entrypoint: 
+      - "mysqld" 
+      - "-g" 
+      - "demon off;"
+
+
+    expose:
+      - "3306"
+
+
+  # Tomcat
+  # Tomcat:
+  #   image: Tomcat
+  #   container_name: sample-kifu-Tomcat
+  #   ports:
+  #     - 8080:8080
+
+  #   networks:
+  #     - default
+  #     - kifu-net
+    
+    # depends_on:
+    #   - mysql
+
+networks:
+    kifu-net:
+        external: true
