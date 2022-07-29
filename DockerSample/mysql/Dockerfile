@@ -1,19 +1,19 @@
-FROM ubuntu:latest
+FROM ubuntu/mysql:latest
 
 RUN apt-get update \
     && apt-get install -y locales \
     && locale-gen ja_JP.UTF-8 \
     && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc
-RUN apt-get install -y mysql-server mysql-client
+# RUN apt-get install -y mysql-server mysql-client
 
 
-# ENV MYSQL_ROOT_PASSWORD=root
-# ENV MYSQL_USER=root
-# ENV MYSQL_PASSWORD=root
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_USER=motoo
+ENV MYSQL_PASSWORD=root
 
 # RUN chmod 644 /etc/mysql/conf.d/mysql.cnf
-RUN chmod 644 /etc/mysql/mysql.conf.d/mysqld.cnf
-COPY ./mysql/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+# RUN chmod 644 /etc/mysql/mysql.conf.d/mysqld.cnf
+# COPY ./mysql/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 # RUN chmod -R 770 /var/lib/mysql
 # RUN chgrp -R mysql /var/lib/mysql
 COPY ./mysql/sqlfiles ./sqlfiles
@@ -24,6 +24,6 @@ COPY ./mysql/sqlfiles ./sqlfiles
 # VOLUME [ "/var/lib/mysql" ]
 # EXPOSE 3306
 
-# ENTRYPOINT [ "mysqld" "-g" "demon off;"]
+
 
 

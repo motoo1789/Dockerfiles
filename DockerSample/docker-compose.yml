@@ -1,27 +1,35 @@
 version: '3.3'
 
 services:
+
   # mysql
   mysql:
     build:
-       dockerfile: ./mysql/Dockerfile
-    
+      dockerfile: ./mysql/Dockerfile
     container_name: sample-kifu-mysql
-    
-    env_file: 
-      - ./mysql/mysql.env
-    
+    # env_file: 
+    #   - ./mysql/mysql_env
+
     volumes:
       - ./reflect:/var/lib/mysql
-
-    entrypoint: 
-      - "mysqld" 
-      - "-g" 
-      - "demon off;"
-
-
     expose:
       - "3306"
+    tty: true
+    # build:
+    #    dockerfile: ./mysql/Dockerfile
+    # container_name: sample-kifu-mysql
+    # env_file: 
+    #   - ./mysql/mysql_env
+    # volumes:
+    #   - ./reflect:/var/lib/mysql
+    # entrypoint: 
+    #   - "mysqld" 
+    #   - "-g" 
+    #   - "demon off;"
+    # expose:
+    #   - "3306"
+    # tty: true
+
 
 
   # Tomcat
@@ -38,6 +46,6 @@ services:
     # depends_on:
     #   - mysql
 
-networks:
-    kifu-net:
-        external: true
+# networks:
+#     kifu-net:
+#         external: true
