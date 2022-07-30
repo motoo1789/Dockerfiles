@@ -15,36 +15,28 @@ services:
     expose:
       - "3306"
     tty: true
-    # build:
-    #    dockerfile: ./mysql/Dockerfile
-    # container_name: sample-kifu-mysql
-    # env_file: 
-    #   - ./mysql/mysql_env
-    # volumes:
-    #   - ./reflect:/var/lib/mysql
+
     # entrypoint: 
     #   - "mysqld" 
     #   - "-g" 
     #   - "demon off;"
-    # expose:
-    #   - "3306"
-    # tty: true
+
 
 
 
   # Tomcat
-  # Tomcat:
-  #   image: Tomcat
-  #   container_name: sample-kifu-Tomcat
-  #   ports:
-  #     - 8080:8080
-
-  #   networks:
-  #     - default
-  #     - kifu-net
+  tomcat:
+    build: 
+      dockerfile: ./tomcat/Dockerfile
+    container_name: sample-kifu-tomcat
+    ports:
+      - 8080:8080
     
-    # depends_on:
-    #   - mysql
+    depends_on:
+      - mysql
+
+
+    
 
 # networks:
 #     kifu-net:
