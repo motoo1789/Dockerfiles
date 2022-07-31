@@ -7,6 +7,6 @@ RUN apt-get update \
 
 COPY ./tomcat/KIfU4.war /usr/local/tomcat/webapps
 
-CMD [ "catalina.sh", "run" ]
+# CMD [ "catalina.sh", "run" ]
 
 

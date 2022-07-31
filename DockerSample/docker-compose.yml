@@ -6,14 +6,15 @@ services:
   mysql:
     build:
       dockerfile: ./mysql/Dockerfile
+    
     container_name: sample-kifu-mysql
     # env_file: 
     #   - ./mysql/mysql_env
 
     volumes:
-      - ./reflect:/var/lib/mysql
+      - ./reflect/db:/var/lib/mysql
     expose:
-      - "3306"
+      - 3306
     tty: true
 
     # entrypoint: 
@@ -30,10 +31,10 @@ services:
       dockerfile: ./tomcat/Dockerfile
     container_name: sample-kifu-tomcat
     ports:
-      - 8080:8080
+      - 8081:8080
     
-    depends_on:
-      - mysql
+    # depends_on:
+    #   - mysql
 
 
     
