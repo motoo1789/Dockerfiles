@@ -7,9 +7,9 @@ RUN apt-get update \
 # RUN apt-get install -y mysql-server mysql-client
 
 
-ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_USER=motoo
-ENV MYSQL_PASSWORD=root
+# ENV MYSQL_ROOT_PASSWORD=root
+# ENV MYSQL_USER=root
+# ENV MYSQL_PASSWORD=root
 
 # RUN chmod 644 /etc/mysql/conf.d/mysql.cnf
 # RUN chmod 644 /etc/mysql/mysql.conf.d/mysqld.cnf

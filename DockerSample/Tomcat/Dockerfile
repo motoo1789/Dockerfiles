@@ -1,4 +1,4 @@
-FROM tomcat:latest
+FROM tomcat:9.0.65-jre8
 
 RUN apt-get update \
     && apt-get install -y locales \

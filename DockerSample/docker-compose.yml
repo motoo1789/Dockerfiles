@@ -1,20 +1,29 @@
 version: '3.3'
 
 services:
-
   # mysql
   mysql:
     build:
       dockerfile: ./mysql/Dockerfile
     
-    container_name: sample-kifu-mysql
+    container_name: sample_kifu_mysql
     # env_file: 
     #   - ./mysql/mysql_env
-
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=root
+    #   - MYSQL_USER=motoo
+    #   - MYSQL_PASSWORD=root
+    environment:
+      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: kifu6
+      
     volumes:
       - ./reflect/db:/var/lib/mysql
+ 
     expose:
-      - 3306
+      - 3306:3306
     tty: true
 
     # entrypoint: 
@@ -22,23 +31,16 @@ services:
     #   - "-g" 
     #   - "demon off;"
 
-
-
-
   # Tomcat
   tomcat:
     build: 
       dockerfile: ./tomcat/Dockerfile
-    container_name: sample-kifu-tomcat
+    container_name: sample_kifu_tomcat
     ports:
-      - 8081:8080
+      - 8080:8080
     
-    # depends_on:
-    #   - mysql
+    depends_on:
+      - mysql
 
 
-    
-
-# networks:
-#     kifu-net:
-#         external: true
+  
