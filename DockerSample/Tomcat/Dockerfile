@@ -6,7 +6,3 @@ RUN apt-get update \
     && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc
 
 COPY ./tomcat/KIfU4.war /usr/local/tomcat/webapps
-
-# CMD [ "catalina.sh", "run" ]
-
-
